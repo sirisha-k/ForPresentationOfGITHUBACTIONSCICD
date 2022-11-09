@@ -15,11 +15,12 @@ public class GithubcicdApplication {
 
 //	git init
 //  git status
-//	git add README.md
+//	git add  src
+//  git add pom.xml
 //	git commit -m "first commit"
-//	git branch -M main
+//	git branch -M master
 //	git remote add origin https://github.com/sirisha-k/ForPresentationOfGITHUBACTIONSCICD.git
-//	git push -u origin main
+//	git push -u origin master
 //
 	@GetMapping("/welcome")
 	public String welcome(){
