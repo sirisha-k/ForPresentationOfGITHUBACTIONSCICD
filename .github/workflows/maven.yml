@@ -47,9 +47,6 @@ jobs:
               image: sirishako:forpresentationcicd_1
               ports:
                 - 3001:8080
-      steps:
-        - name: Get from Service-1
-          run: http://localhost:3001/welcome
 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
