@@ -18,6 +18,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    services:
+      service-name-1:
+        image: sirishako:forpresentationcicd_1
+        ports:
+           - 3001:8080
 
     steps:
     - uses: actions/checkout@v3
@@ -38,6 +43,9 @@ jobs:
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Get from Service-1
+      run: http://localhost:3001/welcome
+
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
