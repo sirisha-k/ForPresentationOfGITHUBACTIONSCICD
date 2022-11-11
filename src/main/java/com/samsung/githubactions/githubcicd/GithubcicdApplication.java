@@ -21,6 +21,8 @@ public class GithubcicdApplication {
 //	git branch -M master
 //	git remote add origin https://github.com/sirisha-k/ForPresentationOfGITHUBACTIONSCICD.git
 //	git push -u origin master
+	//to set the token if expired
+//git remote set-url origin https://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@github.com/sirisha-k/ForPresentationOfGITHUBACTIONSCICD.git
 
 	@GetMapping("/welcome")
 	public String welcome(){
