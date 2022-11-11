@@ -24,7 +24,7 @@ public class GithubcicdApplication {
 
 	@GetMapping("/welcome")
 	public String welcome(){
-		return "Welcome to my home page sirisha";
+		return "Welcome to my home page sirisha!!";
 	}
 
 }

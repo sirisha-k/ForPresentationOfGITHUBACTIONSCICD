@@ -19,24 +19,32 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 8
-      uses: actions/setup-java@v3
-      with:
-        java-version: '8'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven
-      run: mvn clean install
-    - name: Build and Push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v5
-      with:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn clean install
+      - name: Approve or deny to push  to Docker
+        uses: trstringer/manual-approval@v1
+        with:
+              approvers: sirisha,Devin,song,org-team1
+              minimum-approvals: 1
+              issue-title: "Pushing code to docker hub"
+              exclude-workflow-initiator-as-approver: false
+              timeout-minutes: 1
+      - name: Build and Push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
           image: sirishako/forpresentationcicd_1
           tags: latest
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    - name: Update dependency graph
-      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+      # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+      - name: Update dependency graph
+        uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
