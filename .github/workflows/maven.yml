@@ -31,11 +31,12 @@ jobs:
       - name: Approve or deny to push  to Docker
         uses: trstringer/manual-approval@v1
         with:
-              approvers: sirisha,Devin,song,org-team1
-              minimum-approvals: 1
-              issue-title: "Pushing code to docker hub"
-              exclude-workflow-initiator-as-approver: false
-              timeout-minutes: 1
+          secret: ${{ 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 }}
+          approvers: sirisha,Devin,song,org-team1
+          minimum-approvals: 1
+          issue-title: "Pushing code to docker hub"
+          exclude-workflow-initiator-as-approver: false
+          timeout-minutes: 1
       - name: Build and Push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
