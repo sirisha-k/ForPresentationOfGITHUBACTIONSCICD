@@ -28,6 +28,15 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn clean install
+      - name: Approve or deny to push  to Docker
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ my 3rd token }}
+          approvers: sirisha,Devin,song,org-team1
+          minimum-approvals: 1
+          issue-title: "Pushing code to docker hub"
+          exclude-workflow-initiator-as-approver: false
+          timeout-minutes: 1
       - name: Build and Push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
