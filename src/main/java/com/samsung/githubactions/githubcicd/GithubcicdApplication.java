@@ -21,10 +21,10 @@ public class GithubcicdApplication {
 //	git branch -M master
 //	git remote add origin https://github.com/sirisha-k/ForPresentationOfGITHUBACTIONSCICD.git
 //	git push -u origin master
-//
+
 	@GetMapping("/welcome")
 	public String welcome(){
-		return "Welcome to my home page";
+		return "Welcome to my home page sirisha";
 	}
 
 }
